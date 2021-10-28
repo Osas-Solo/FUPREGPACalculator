@@ -1,0 +1,128 @@
+<resources>
+    <string name="app_name">FUPRE GPA Calculator</string>
+
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+    <string name="gpa_calculator_menu_item_title">GPA Calculator</string>
+    <string name="help_menu_item_title">Help</string>
+    <string name="about_menu_item_title">About</string>
+    
+    <string name="gpa_calculator_intro_title">Intro</string>
+    <string name="gpa_calculator_semesters_setup_title">Semesters Setup</string>
+    <string name="gpa_calculator_calculator_title">Calculator</string>
+    <string name="gpa_calculator_result_title">Result</string>
+
+
+    <string-array name="institution_types">
+        <item>University</item>
+        <item>Polytechnic</item>
+        <item>College of Education</item>
+    </string-array>
+
+    <string name="institution_label">Institution</string>
+    <string name="levels_label">Levels</string>
+
+    <string-array name="university_level_names">
+        <item>100 Level</item>
+        <item>200 Level</item>
+        <item>300 Level</item>
+        <item>400 Level</item>
+        <item>500 Level</item>
+        <item>600 Level</item>
+        <item>700 Level</item>
+    </string-array>
+
+    <string-array name="polytechnic_level_names">
+        <item>ND 1</item>
+        <item>ND 2</item>
+        <item>HND 1</item>
+        <item>HND 2</item>
+    </string-array>
+
+    <string-array name="college_of_education_level_names">
+        <item>Year 1</item>
+        <item>Year 2</item>
+        <item>Year 3</item>
+    </string-array>
+
+    <string-array name="university_and_college_of_education_grades">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+    </string-array>
+
+    <string-array name="polytechnic_grades">
+        <item>A</item>
+        <item>AB</item>
+        <item>B</item>
+        <item>BC</item>
+        <item>C</item>
+        <item>CD</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+    </string-array>
+
+    <string name="first_semester_label">First Semester</string>
+    <string name="second_semester_label">Second Semester</string>
+
+    <string name="proceed_button_text">Proceed</string>
+    
+    <string name="course_number_label">Number of Course(s)</string>
+    <string name="course_number_hint">Enter number of course(s)</string>
+
+    <string name="course_code_label">Course Code</string>
+    <string name="course_code_hint">Enter course code</string>
+
+    <string name="credit_unit_label">Credit Unit(s)</string>
+    <string name="credit_unit_hint">Enter credit unit(s)</string>
+
+    <string name="grade_label">Grade</string>
+
+    <string name="add_courses_prompt">Add Course(s)</string>
+
+    <string name="previous_button_text">Previous Semester</string>
+    <string name="next_button_text">Next Semester</string>
+    <string name="calculate_button_text">Calculate</string>
+
+    <string name="gpa_label">GPA</string>
+    <string name="total_number_of_units_label">Total Number of Units</string>
+    <string name="total_credit_points_label">Total Credit Points</string>
+    <string name="remark_label">Remark</string>
+    
+    <string name="cgpa_label">CGPA</string>
+
+    <string name="no_semester_selected_toast">No semester selected</string>
+    <string name="too_many_courses_in_semester_toast">
+        The maximum number of courses allowed in a semester is 30
+    </string>
+    <string name="add_courses">Add Course(s)</string>
+    <string name="courses_added_successfully_toast">%2d course(s) added successfully</string>
+
+    <string name="course_deleted_successfully_toast">%1s deleted successfully</string>
+
+    <string name="version_title"><b>Version:</b></string>
+    <string name="github_repository_title"><b>Project Source Code:</b></string>
+    <string name="github_repository_link">
+        <a href="https://github.com/Osas-Solo/FUPREGPACalculator">
+            www.Github.com/Osas-Solo/FUPREGPACalculator
+        </a>
+    </string>
+    <string name="developer_title"><b>Developer:</b></string>
+    <string name="developer_name">Osaremhen Ukpebor</string>
+    <string name="contacts_title"><b>Contact</b></string>
+    <string name="email_title"><b>Email:</b></string>
+    <string name="email_address"><a href="mailto:Osas.Solo25@gmail.com">Osas.Solo25@gmail.com</a></string>
+    <string name="twitter_title"><b>Twitter:</b></string>
+    <string name="twitter_handle"><a href="https://twitter.com/OsasSolo">OsasSolo</a></string>
+    <string name="github_title"><b>Github:</b></string>
+    <string name="github_profile">
+        <a href="https://github.com/Osas-Solo">
+            www.Github.com/Osas-Solo
+        </a>
+    </string>
+
+</resources>

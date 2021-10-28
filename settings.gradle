@@ -1,0 +1,2 @@
+rootProject.name = "FUPRE GPA Calculator"
+include ':app'
