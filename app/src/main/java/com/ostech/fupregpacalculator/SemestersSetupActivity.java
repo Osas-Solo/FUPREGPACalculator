@@ -66,7 +66,7 @@ public class SemestersSetupActivity extends AppCompatActivity
             Log.i(TAG, "onCreate: Recovered academic record:" + recoveredAcademicRecord.getInstitutionType());
         }
 
-        AcademicRecord academicRecord = AcademicRecord.getInstance();
+        AcademicRecord academicRecord = AcademicRecord.getInstance(this);
         academicRecord.setInstitutionType(recoveredAcademicRecord.getInstitutionType());
         academicRecord.setSemesterList(recoveredAcademicRecord.getSemesterList());
     }
@@ -75,7 +75,7 @@ public class SemestersSetupActivity extends AppCompatActivity
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
 
-        savedInstanceState.putSerializable(ACADEMIC_RECORD, AcademicRecord.getInstance());
+        savedInstanceState.putSerializable(ACADEMIC_RECORD, AcademicRecord.getInstance(this));
     }
 
     @Override

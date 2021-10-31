@@ -124,8 +124,8 @@ public class IntroFragment extends Fragment {
         }
 
         if (semesterList.size() != 0) {
-            AcademicRecord.getInstance().setInstitutionType(institution);
-            AcademicRecord.getInstance().setSemesterList(semesterList);
+            AcademicRecord.getInstance(getActivity()).setInstitutionType(institution);
+            AcademicRecord.getInstance(getActivity()).setSemesterList(semesterList);
 
             Intent semestersSetupIntent = SemestersSetupActivity.newIntent(getActivity());
             startActivity(semestersSetupIntent);

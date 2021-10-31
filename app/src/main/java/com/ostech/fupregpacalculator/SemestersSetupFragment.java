@@ -28,7 +28,7 @@ public class SemestersSetupFragment extends Fragment {
     private RecyclerView semestersRecyclerView;
     private AppCompatButton proceedButton;
 
-    private final ArrayList<Semester> semesterList = AcademicRecord.getInstance().getSemesterList();
+    private final ArrayList<Semester> semesterList = AcademicRecord.getInstance(getActivity()).getSemesterList();
 
     private SemesterAdapter semesterAdapter;
 

@@ -71,7 +71,7 @@ public class SemesterFragment extends Fragment {
         setHasOptionsMenu(true);
 
         semesterPosition = getArguments().getInt(ARG_SEMESTER_POSITION);
-        currentSemester = AcademicRecord.getInstance().getSemesterList().get(semesterPosition);
+        currentSemester = AcademicRecord.getInstance(getActivity()).getSemesterList().get(semesterPosition);
     }
 
     @Override
@@ -141,11 +141,11 @@ public class SemesterFragment extends Fragment {
         if (semesterPosition == 0) {
             previousSemesterButton.setVisibility(View.INVISIBLE);
 
-            if (semesterPosition == AcademicRecord.getInstance().getNumberOfSemesters() - 1) {
+            if (semesterPosition == AcademicRecord.getInstance(getActivity()).getNumberOfSemesters() - 1) {
                 nextSemesterButton.setVisibility(View.INVISIBLE);
                 calculateButton.setVisibility(View.VISIBLE);
             }
-        } else if (semesterPosition == AcademicRecord.getInstance().getNumberOfSemesters() - 1) {
+        } else if (semesterPosition == AcademicRecord.getInstance(getActivity()).getNumberOfSemesters() - 1) {
             nextSemesterButton.setVisibility(View.INVISIBLE);
             calculateButton.setVisibility(View.VISIBLE);
         } else {
@@ -322,7 +322,7 @@ public class SemesterFragment extends Fragment {
                 semesterCreditUnitEditText.setText("" + this.course.getCreditUnit());
             }
 
-            Institution institution = AcademicRecord.getInstance().getInstitutionType();
+            Institution institution = AcademicRecord.getInstance(getActivity()).getInstitutionType();
             String[] gradesArray;
 
             if (institution instanceof Polytechnic) {

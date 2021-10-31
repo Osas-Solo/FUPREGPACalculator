@@ -37,8 +37,8 @@ public class ResultFragment extends Fragment {
     private AppCompatTextView remarkTextView;
     private RecyclerView semesterCoursesRecyclerView;
 
-    private final ArrayList<Semester> semesterList = AcademicRecord.getInstance().getSemesterList();
-    private final Institution institution = AcademicRecord.getInstance().getInstitutionType();
+    private final ArrayList<Semester> semesterList = AcademicRecord.getInstance(getActivity()).getSemesterList();
+    private final Institution institution = AcademicRecord.getInstance(getActivity()).getInstitutionType();
 
     private SemesterAdapter semesterAdapter;
     private SemesterCoursesAdapter semesterCoursesAdapter;
@@ -55,12 +55,12 @@ public class ResultFragment extends Fragment {
         remarkTextView = view.findViewById(R.id.result_remark_text_view);
         semesterCoursesRecyclerView = view.findViewById(R.id.result_semester_courses_recycler_view);
 
-        AcademicRecord.getInstance().calculateCGPA();
+        AcademicRecord.getInstance(getActivity()).calculateCGPA();
 
-        double cgpa = AcademicRecord.getInstance().getCumulativeGradePointAverage();
-        double totalCreditUnit = AcademicRecord.getInstance().getTotalCreditUnit();
-        double totalGradePoint = AcademicRecord.getInstance().getTotalGradePoint();
-        int numberOfCourses = AcademicRecord.getInstance().getNumberOfCourses();
+        double cgpa = AcademicRecord.getInstance(getActivity()).getCumulativeGradePointAverage();
+        double totalCreditUnit = AcademicRecord.getInstance(getActivity()).getTotalCreditUnit();
+        double totalGradePoint = AcademicRecord.getInstance(getActivity()).getTotalGradePoint();
+        int numberOfCourses = AcademicRecord.getInstance(getActivity()).getNumberOfCourses();
         String remark = institution.getRemark(cgpa);
 
         cgpaTextView.setText(String.format("%.2f", cgpa));
@@ -71,7 +71,7 @@ public class ResultFragment extends Fragment {
 
         semestersRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        AcademicRecord.getInstance().sortCoursesInSemesters();
+        AcademicRecord.getInstance(getActivity()).sortCoursesInSemesters();
 
         if (semesterAdapter == null) {
             semesterAdapter = new SemesterAdapter(semesterList);

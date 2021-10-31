@@ -1,7 +1,11 @@
 package com.ostech.fupregpacalculator.model;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import com.ostech.fupregpacalculator.database.DepartmentsDatabaseHelper;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,11 +14,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class AcademicRecord implements Serializable {
-    private static final AcademicRecord academicRecord = new AcademicRecord();
+    private static AcademicRecord academicRecord;
 
     private Institution institutionType;
     private ArrayList<Semester> semesterList = new ArrayList<>();
     private double cumulativeGradePointAverage;
+
+    private Context context;
+    private SQLiteDatabase departmentsDatabase;
 
     public Institution getInstitutionType() {
         return institutionType;
@@ -42,11 +49,18 @@ public class AcademicRecord implements Serializable {
         return (double) (Math.round(cumulativeGradePointAverage * 100)) / 100;
     }
 
-    public static AcademicRecord getInstance() {
+    public static AcademicRecord getInstance(Context context) {
+        if (academicRecord == null) {
+            academicRecord = new AcademicRecord(context);
+        }
+
         return academicRecord;
     }
 
-    private AcademicRecord() { }
+    private AcademicRecord(Context context) {
+        this.context = context.getApplicationContext();
+        this.departmentsDatabase = new DepartmentsDatabaseHelper(context).getReadableDatabase();
+    }
 
     public int getNumberOfSemesters() {
         return semesterList.size();

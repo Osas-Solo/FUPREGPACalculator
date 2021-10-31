@@ -62,7 +62,7 @@ public class SemesterPagerActivity extends AppCompatActivity
 
         semesterViewPager = findViewById(R.id.semester_view_pager);
 
-        semesterList = AcademicRecord.getInstance().getSemesterList();
+        semesterList = AcademicRecord.getInstance(this).getSemesterList();
 
         semesterViewPager.setAdapter(new FragmentStateAdapter(this) {
             @Override
@@ -90,7 +90,7 @@ public class SemesterPagerActivity extends AppCompatActivity
             Log.i(TAG, "onCreate: Recovered academic record:" + recoveredAcademicRecord.getInstitutionType());
         }
 
-        AcademicRecord academicRecord = AcademicRecord.getInstance();
+        AcademicRecord academicRecord = AcademicRecord.getInstance(this);
         academicRecord.setInstitutionType(recoveredAcademicRecord.getInstitutionType());
         academicRecord.setSemesterList(recoveredAcademicRecord.getSemesterList());
     }
@@ -99,7 +99,7 @@ public class SemesterPagerActivity extends AppCompatActivity
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
 
-        savedInstanceState.putSerializable(ACADEMIC_RECORD, AcademicRecord.getInstance());
+        savedInstanceState.putSerializable(ACADEMIC_RECORD, AcademicRecord.getInstance(this));
     }
 
     @Override
