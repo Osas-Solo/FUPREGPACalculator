@@ -12,40 +12,32 @@
     <string name="gpa_calculator_calculator_title">Calculator</string>
     <string name="gpa_calculator_result_title">Result</string>
 
-
-    <string-array name="institution_types">
-        <item>University</item>
-        <item>Polytechnic</item>
-        <item>College of Education</item>
+    <string-array name="college_types">
+        <item>College of Science</item>
+        <item>College of Technology</item>
     </string-array>
 
-    <string name="institution_label">Institution</string>
+    <string name="college_label">College</string>
+    <string name="department_label">Department</string>
+
     <string name="levels_label">Levels</string>
 
-    <string-array name="university_level_names">
+    <string-array name="college_of_science_level_names">
+        <item>100 Level</item>
+        <item>200 Level</item>
+        <item>300 Level</item>
+        <item>400 Level</item>
+    </string-array>
+
+    <string-array name="college_of_technology_level_names">
         <item>100 Level</item>
         <item>200 Level</item>
         <item>300 Level</item>
         <item>400 Level</item>
         <item>500 Level</item>
-        <item>600 Level</item>
-        <item>700 Level</item>
     </string-array>
 
-    <string-array name="polytechnic_level_names">
-        <item>ND 1</item>
-        <item>ND 2</item>
-        <item>HND 1</item>
-        <item>HND 2</item>
-    </string-array>
-
-    <string-array name="college_of_education_level_names">
-        <item>Year 1</item>
-        <item>Year 2</item>
-        <item>Year 3</item>
-    </string-array>
-
-    <string-array name="university_and_college_of_education_grades">
+    <string-array name="grades">
         <item>A</item>
         <item>B</item>
         <item>C</item>
@@ -54,23 +46,30 @@
         <item>F</item>
     </string-array>
 
-    <string-array name="polytechnic_grades">
-        <item>A</item>
-        <item>AB</item>
-        <item>B</item>
-        <item>BC</item>
-        <item>C</item>
-        <item>CD</item>
-        <item>D</item>
-        <item>E</item>
-        <item>F</item>
+    <string-array name="college_of_science_departments">
+        <item>Computer Science</item>
+        <item>Mathematics</item>
+        <item>Chemistry</item>
+        <item>Industrial Chemistry</item>
+        <item>Physics</item>
+        <item>Geology</item>
+        <item>Geophysics</item>
+        <item>Environmental Management and Toxicology</item>
+    </string-array>
+
+    <string-array name="college_of_technology_departments">
+        <item>Electrical and Electronics Engineering</item>
+        <item>Petroleum Engineering</item>
+        <item>Chemical Engineering</item>
+        <item>Mechanical Engineering</item>
+        <item>Marine Engineering</item>
     </string-array>
 
     <string name="first_semester_label">First Semester</string>
     <string name="second_semester_label">Second Semester</string>
 
     <string name="proceed_button_text">Proceed</string>
-    
+
     <string name="course_number_label">Number of Course(s)</string>
     <string name="course_number_hint">Enter number of course(s)</string>
 

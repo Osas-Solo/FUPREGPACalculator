@@ -2,36 +2,32 @@ package com.ostech.fupregpacalculator.model;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Parcel;
-import android.os.Parcelable;
 
 import com.ostech.fupregpacalculator.database.DepartmentsDatabaseHelper;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 public class AcademicRecord implements Serializable {
     private static AcademicRecord academicRecord;
 
-    private Institution institutionType;
+    private College collegeType;
     private ArrayList<Semester> semesterList = new ArrayList<>();
     private double cumulativeGradePointAverage;
 
     private Context context;
     private SQLiteDatabase departmentsDatabase;
 
-    public Institution getInstitutionType() {
-        return institutionType;
+    public College getInstitutionType() {
+        return collegeType;
     }
 
-    public void setInstitutionType(Institution institutionType) {
-        this.institutionType = institutionType;
+    public void setInstitutionType(College collegeType) {
+        this.collegeType = collegeType;
 
         for (Semester currentSemester: getSemesterList()) {
-            currentSemester.setInstitution(institutionType);
+            currentSemester.setInstitution(collegeType);
         }
     }
 

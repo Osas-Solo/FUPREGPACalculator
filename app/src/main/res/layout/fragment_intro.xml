@@ -11,7 +11,38 @@
         android:padding="20dp">
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/institution_layout"
+            android:id="@+id/college_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/department_layout">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/college_label" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/college_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dialog"
+                android:entries="@array/college_types"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:padding="10dp"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/department_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -20,26 +51,25 @@
             android:layout_marginBottom="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/levels_layout">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="@string/institution_label" />
+                android:text="@string/department_label" />
 
             <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/institution_spinner"
+                android:id="@+id/department_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:spinnerMode="dialog"
-                android:entries="@array/institution_types"
                 android:textAlignment="center"
                 android:gravity="center_horizontal"
-                android:padding="10dp"/>
+                android:padding="20dp"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
+
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/levels_layout"
@@ -51,7 +81,7 @@
             android:layout_marginBottom="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/institution_layout"
+            app:layout_constraintTop_toBottomOf="@+id/college_layout"
             app:layout_constraintBottom_toTopOf="@+id/intro_proceed_button">
 
             <androidx.appcompat.widget.AppCompatTextView

@@ -19,21 +19,15 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatEditText;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ostech.fupregpacalculator.SemesterPagerActivity;
 import com.ostech.fupregpacalculator.model.AcademicRecord;
 import com.ostech.fupregpacalculator.model.Course;
-import com.ostech.fupregpacalculator.model.Institution;
-import com.ostech.fupregpacalculator.model.Polytechnic;
+import com.ostech.fupregpacalculator.model.College;
 import com.ostech.fupregpacalculator.model.Semester;
 
 import java.util.ArrayList;
@@ -322,22 +316,8 @@ public class SemesterFragment extends Fragment {
                 semesterCreditUnitEditText.setText("" + this.course.getCreditUnit());
             }
 
-            Institution institution = AcademicRecord.getInstance(getActivity()).getInstitutionType();
-            String[] gradesArray;
-
-            if (institution instanceof Polytechnic) {
-                gradesArray = getResources().getStringArray(R.array.polytechnic_grades);
-            } else {
-                gradesArray = getResources().getStringArray(
-                        R.array.university_and_college_of_education_grades);
-            }
-
-            ArrayAdapter<String> gradesArrayAdapter = new ArrayAdapter<String>(
-                    getActivity(), android.R.layout.simple_spinner_item, gradesArray );
-            semesterGradeSpinner.setAdapter(gradesArrayAdapter);
-
-            int gradeIndex = Arrays.binarySearch(institution.getGrades(), course.getGrade());
-
+            College college = AcademicRecord.getInstance(getActivity()).getInstitutionType();
+            int gradeIndex = Arrays.binarySearch(college.getGrades(), course.getGrade());
             semesterGradeSpinner.setSelection(gradeIndex);
         }
     }

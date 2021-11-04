@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
@@ -18,22 +19,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ostech.fupregpacalculator.model.AcademicRecord;
-import com.ostech.fupregpacalculator.model.CollegeOfEducation;
-import com.ostech.fupregpacalculator.model.Institution;
+import com.ostech.fupregpacalculator.model.CollegeOfTechnology;
+import com.ostech.fupregpacalculator.model.College;
+import com.ostech.fupregpacalculator.model.CollegeOfScience;
 import com.ostech.fupregpacalculator.model.Level;
 import com.ostech.fupregpacalculator.model.LevelSemester;
-import com.ostech.fupregpacalculator.model.Polytechnic;
 import com.ostech.fupregpacalculator.model.Semester;
-import com.ostech.fupregpacalculator.model.University;
 
 import java.util.ArrayList;
 
 public class IntroFragment extends Fragment {
     private static final String TAG = IntroFragment.class.getCanonicalName();
 
-    private Institution institution;
+    private College college;
 
-    private AppCompatSpinner institutionSpinner;
+    private AppCompatSpinner collegeSpinner;
+    private AppCompatSpinner departmentSpinner;
     private RecyclerView semestersRecyclerView;
     private AppCompatButton proceedButton;
 
@@ -43,16 +44,29 @@ public class IntroFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_intro, container, false);
 
-        institutionSpinner = view.findViewById(R.id.institution_spinner);
+        collegeSpinner = view.findViewById(R.id.college_spinner);
+        departmentSpinner = view.findViewById(R.id.department_spinner);
         semestersRecyclerView = view.findViewById(R.id.intro_semesters_recycler_view);
         proceedButton = view.findViewById(R.id.intro_proceed_button);
 
         semestersRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        institutionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        collegeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                updateSemestersLayout();
+                updateCollege();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        departmentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                updateDepartment();
             }
 
             @Override
@@ -81,50 +95,85 @@ public class IntroFragment extends Fragment {
         getActivity().setTitle(title);
     }
 
-    private void updateSemestersLayout() {
+    private void updateCollege() {
         levelAdapter = null;
 
-        String institutionType = institutionSpinner.getSelectedItem().toString();
+        String collegeType = getCollegeType();
 
-        switch (institutionType) {
-            case "University":
-                institution = new University();
+        switch (collegeType) {
+            case "College of Science":
+                college = new CollegeOfScience();
+                updateDepartmentSpinner(R.array.college_of_science_departments);
                 break;
 
-            case "Polytechnic":
-                institution = new Polytechnic();
-                break;
-
-            case "College of Education":
-                institution = new CollegeOfEducation();
+            case "College of Technology":
+                college = new CollegeOfTechnology();
+                updateDepartmentSpinner(R.array.college_of_technology_departments);
                 break;
         }
+    }
 
+    private String getCollegeType() {
+        return collegeSpinner.getSelectedItem().toString();
+    }
+
+    private void updateDepartmentSpinner(int departmentArrayId) {
+        String[] departmentArray = getResources().getStringArray(departmentArrayId);
+
+        ArrayAdapter<String> gradesArrayAdapter = new ArrayAdapter<String>(
+                getActivity(), android.R.layout.simple_spinner_item, departmentArray );
+        departmentSpinner.setAdapter(gradesArrayAdapter);
+
+        updateLevelsLayout();
+    }
+
+    private void updateDepartment() {
+        levelAdapter = null;
+
+        String collegeType = getCollegeType();
+        String departmentName = getDepartmentName();
+
+        if (collegeType.equalsIgnoreCase("College of Science")) {
+            if (departmentName.equalsIgnoreCase("Environmental Management and Toxicology")) {
+                college = new CollegeOfTechnology();
+            } else {
+                college = new CollegeOfScience();
+            }
+        }
+
+        updateLevelsLayout();
+    }
+
+    private String getDepartmentName() {
+        return departmentSpinner.getSelectedItem().toString();
+    }
+
+    private void updateLevelsLayout() {
         if (levelAdapter == null) {
-            levelAdapter = new LevelAdapter(institution.getLevels());
+            levelAdapter = new LevelAdapter(college.getLevels());
             semestersRecyclerView.setAdapter(levelAdapter);
         } else {
-            levelAdapter.setLevels(institution.getLevels());
+            levelAdapter.setLevels(college.getLevels());
         }
-    }   //  end of updateSemestersLayout()
+    }
 
     private void setupAcademicRecord() {
         ArrayList<Semester> semesterList = new ArrayList<>();
 
-        for (Level currentLevel: institution.getLevels()) {
+        for (Level currentLevel: college.getLevels()) {
             for (int i = 0; i < currentLevel.getSemesters().size(); i++) {
                 LevelSemester currentSemester = currentLevel.getSemesters().get(i);
 
                 if (currentSemester.isSelected()) {
                     Semester semester = new Semester(currentSemester.getSemesterName());
-                    semester.setInstitution(institution);
+                    semester.setInstitution(college);
                     semesterList.add(semester);
                 }
             }
         }
 
         if (semesterList.size() != 0) {
-            AcademicRecord.getInstance(getActivity()).setInstitutionType(institution);
+            AcademicRecord.getInstance(getActivity()).setInstitutionType(college);
             AcademicRecord.getInstance(getActivity()).setSemesterList(semesterList);
 
             Intent semestersSetupIntent = SemestersSetupActivity.newIntent(getActivity());

@@ -3,7 +3,6 @@ package com.ostech.fupregpacalculator;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.MenuItem;
 
@@ -16,12 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.navigation.NavigationView;
-import com.ostech.fupregpacalculator.SemestersSetupFragment;
 import com.ostech.fupregpacalculator.model.AcademicRecord;
-import com.ostech.fupregpacalculator.model.Institution;
-import com.ostech.fupregpacalculator.model.Semester;
-
-import java.util.ArrayList;
 
 
 public class SemestersSetupActivity extends AppCompatActivity

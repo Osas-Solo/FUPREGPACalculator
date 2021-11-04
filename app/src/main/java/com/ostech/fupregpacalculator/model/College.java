@@ -1,17 +1,27 @@
 package com.ostech.fupregpacalculator.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 
-public class University extends Institution {
+public class College implements Serializable {
+    public final double MAXIMUM_GPA = 5.0;
 
-    public University() {
-        getLevels().add(new Level("100 Level"));
-        getLevels().add(new Level("200 Level"));
-        getLevels().add(new Level("300 Level"));
-        getLevels().add(new Level("400 Level"));
-        getLevels().add(new Level("500 Level"));
-        getLevels().add(new Level("600 Level"));
-        getLevels().add(new Level("700 Level"));
+    private ArrayList<Level> levels = new ArrayList<>();
+
+    private String[] grades = {"A", "B", "C", "D", "E", "F"};
+    private double[] points = {5, 4, 3, 2, 1, 0};
+
+    public ArrayList<Level> getLevels() {
+        return levels;
+    }
+
+    public String[] getGrades() {
+        return grades;
+    }
+
+    public double[] getPoints() {
+        return points;
     }
 
     public String getRemark(double gradePointAverage) {
@@ -30,5 +40,9 @@ public class University extends Institution {
         }
 
         return remark;
+    }
+
+    public double getGradePoint(String grade) {
+        return points[Arrays.binarySearch(grades, grade)];
     }
 }

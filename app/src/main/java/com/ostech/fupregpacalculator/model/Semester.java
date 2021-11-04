@@ -4,18 +4,18 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Semester implements Serializable {
-    private Institution institution;
+    private College college;
 
     private String semesterName;
     private ArrayList<Course> courseList;
     private double semesterGPA;
 
-    public Institution getInstitution() {
-        return institution;
+    public College getInstitution() {
+        return college;
     }
 
-    public void setInstitution(Institution institution) {
-        this.institution = institution;
+    public void setInstitution(College college) {
+        this.college = college;
     }
 
     public String getSemesterName() {
@@ -73,7 +73,7 @@ public class Semester implements Serializable {
 
         for (Course currentCourse: courseList) {
             totalGradePoint += currentCourse.getCreditUnit() *
-                    institution.getGradePoint(currentCourse.getGrade());
+                    college.getGradePoint(currentCourse.getGrade());
         }
 
         return totalGradePoint;

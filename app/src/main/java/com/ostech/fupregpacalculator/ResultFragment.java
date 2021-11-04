@@ -5,13 +5,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ostech.fupregpacalculator.model.AcademicRecord;
 import com.ostech.fupregpacalculator.model.Course;
-import com.ostech.fupregpacalculator.model.Institution;
+import com.ostech.fupregpacalculator.model.College;
 import com.ostech.fupregpacalculator.model.Semester;
 
 import java.util.ArrayList;
@@ -38,7 +34,7 @@ public class ResultFragment extends Fragment {
     private RecyclerView semesterCoursesRecyclerView;
 
     private final ArrayList<Semester> semesterList = AcademicRecord.getInstance(getActivity()).getSemesterList();
-    private final Institution institution = AcademicRecord.getInstance(getActivity()).getInstitutionType();
+    private final College college = AcademicRecord.getInstance(getActivity()).getInstitutionType();
 
     private SemesterAdapter semesterAdapter;
     private SemesterCoursesAdapter semesterCoursesAdapter;
@@ -61,7 +57,7 @@ public class ResultFragment extends Fragment {
         double totalCreditUnit = AcademicRecord.getInstance(getActivity()).getTotalCreditUnit();
         double totalGradePoint = AcademicRecord.getInstance(getActivity()).getTotalGradePoint();
         int numberOfCourses = AcademicRecord.getInstance(getActivity()).getNumberOfCourses();
-        String remark = institution.getRemark(cgpa);
+        String remark = college.getRemark(cgpa);
 
         cgpaTextView.setText(String.format("%.2f", cgpa));
         tnuTextView.setText(String.format("%.0f", totalCreditUnit));
@@ -133,7 +129,7 @@ public class ResultFragment extends Fragment {
             double totalCreditUnit = semester.getTotalCreditUnit();
             double totalGradePoint = semester.getTotalGradePoint();
             int numberOfCourses = semester.getNumberOfCourses();
-            String remark = institution.getRemark(gpa);
+            String remark = college.getRemark(gpa);
 
             gpaSemesterTextView.setText(semester.getSemesterName());
 
