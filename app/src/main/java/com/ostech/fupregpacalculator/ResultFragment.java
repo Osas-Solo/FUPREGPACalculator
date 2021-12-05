@@ -34,7 +34,7 @@ public class ResultFragment extends Fragment {
     private RecyclerView semesterCoursesRecyclerView;
 
     private final ArrayList<Semester> semesterList = AcademicRecord.getInstance(getActivity()).getSemesterList();
-    private final College college = AcademicRecord.getInstance(getActivity()).getInstitutionType();
+    private final College college = AcademicRecord.getInstance(getActivity()).getCollegeType();
 
     private SemesterAdapter semesterAdapter;
     private SemesterCoursesAdapter semesterCoursesAdapter;

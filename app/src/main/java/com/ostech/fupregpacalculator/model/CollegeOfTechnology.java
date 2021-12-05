@@ -1,6 +1,8 @@
 package com.ostech.fupregpacalculator.model;
 
-public class CollegeOfTechnology extends College {
+import java.io.Serializable;
+
+public class CollegeOfTechnology extends College implements Serializable {
     public CollegeOfTechnology() {
         getLevels().add(new Level("100 Level"));
         getLevels().add(new Level("200 Level"));

@@ -15,7 +15,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.navigation.NavigationView;
-import com.ostech.fupregpacalculator.ResultFragment;
 import com.ostech.fupregpacalculator.model.AcademicRecord;
 
 public class ResultActivity extends AppCompatActivity
@@ -56,11 +55,11 @@ public class ResultActivity extends AppCompatActivity
                 (AcademicRecord) savedInstanceState.getSerializable("ACADEMIC_RECORD");
 
         if (recoveredAcademicRecord != null) {
-            Log.i(TAG, "onCreate: Recovered academic record:" + recoveredAcademicRecord.getInstitutionType());
+            Log.i(TAG, "onCreate: Recovered academic record:" + recoveredAcademicRecord.getCollegeType());
         }
 
         AcademicRecord academicRecord = AcademicRecord.getInstance(this);
-        academicRecord.setInstitutionType(recoveredAcademicRecord.getInstitutionType());
+        academicRecord.setInstitutionType(recoveredAcademicRecord.getCollegeType());
         academicRecord.setSemesterList(recoveredAcademicRecord.getSemesterList());
     }
 

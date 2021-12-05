@@ -32,6 +32,7 @@ public class IntroFragment extends Fragment {
     private static final String TAG = IntroFragment.class.getCanonicalName();
 
     private College college;
+    private String departmentName;
 
     private AppCompatSpinner collegeSpinner;
     private AppCompatSpinner departmentSpinner;
@@ -131,7 +132,7 @@ public class IntroFragment extends Fragment {
         levelAdapter = null;
 
         String collegeType = getCollegeType();
-        String departmentName = getDepartmentName();
+        departmentName = getDepartmentName();
 
         if (collegeType.equalsIgnoreCase("College of Science")) {
             if (departmentName.equalsIgnoreCase("Environmental Management and Toxicology")) {
@@ -173,8 +174,10 @@ public class IntroFragment extends Fragment {
         }
 
         if (semesterList.size() != 0) {
-            AcademicRecord.getInstance(getActivity()).setInstitutionType(college);
-            AcademicRecord.getInstance(getActivity()).setSemesterList(semesterList);
+            AcademicRecord academicRecord = AcademicRecord.getInstance(getActivity());
+            academicRecord.setCollegeType(college);
+            academicRecord.setDepartmentName(departmentName);
+            academicRecord.setSemesterList(semesterList);
 
             Intent semestersSetupIntent = SemestersSetupActivity.newIntent(getActivity());
             startActivity(semestersSetupIntent);

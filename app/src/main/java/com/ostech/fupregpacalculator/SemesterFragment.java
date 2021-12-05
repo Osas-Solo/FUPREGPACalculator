@@ -13,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -316,7 +315,7 @@ public class SemesterFragment extends Fragment {
                 semesterCreditUnitEditText.setText("" + this.course.getCreditUnit());
             }
 
-            College college = AcademicRecord.getInstance(getActivity()).getInstitutionType();
+            College college = AcademicRecord.getInstance(getActivity()).getCollegeType();
             int gradeIndex = Arrays.binarySearch(college.getGrades(), course.getGrade());
             semesterGradeSpinner.setSelection(gradeIndex);
         }
