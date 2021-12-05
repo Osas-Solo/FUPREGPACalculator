@@ -119,7 +119,7 @@ public class AcademicRecord implements Serializable {
 
     public void getCoursesFromDatabase() {
         for (Semester currentSemester: semesterList) {
-
+            getSemesterCoursesFromDatabase(currentSemester);
         }
     }
 
@@ -128,22 +128,34 @@ public class AcademicRecord implements Serializable {
                 Pattern.CASE_INSENSITIVE);
         Matcher semesterDetailsMatcher = semesterDetailsPattern.matcher(semester.getSemesterName());
 
-        int level = Integer.parseInt(semesterDetailsMatcher.group(1));
+        String level = semesterDetailsMatcher.group(1);
         String semesterNumber = semesterDetailsMatcher.group(2);
 
         String departmentName = getDepartmentName().replace(" ", "_");
 
-        String selectionColumns = ;
+        String selectionColumns = LEVEL + " = ? AND " + SEMESTER + " = ?";
+        String[] selectionColumnArguments = {level, semesterNumber};
+        String sortOrder = COURSE_CODE;
 
-        CourseCursorWrapper cursor = departmentsDatabase.query(
+        CourseCursorWrapper cursor = (CourseCursorWrapper) departmentsDatabase.query(
                 departmentName,
                 null,
-
-
+                selectionColumns,
+                selectionColumnArguments,
+                null,
+                null,
+                sortOrder
         );
 
+        try {
+            cursor.moveToFirst();
 
-    }
+            semester.getCourseList().add(cursor.getCourse());
+        } finally {
+            cursor.close();
+        }
+
+    }   //  end of getSemesterCoursesFromDatabase()
 
     public void sortCoursesInSemesters() {
         for (Semester currentSemester: semesterList) {

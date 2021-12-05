@@ -2,6 +2,7 @@ package com.ostech.fupregpacalculator;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import com.ostech.fupregpacalculator.model.AcademicRecord;
 import com.ostech.fupregpacalculator.model.CollegeOfTechnology;
 import com.ostech.fupregpacalculator.model.College;
 import com.ostech.fupregpacalculator.model.CollegeOfScience;
+import com.ostech.fupregpacalculator.model.Course;
 import com.ostech.fupregpacalculator.model.Level;
 import com.ostech.fupregpacalculator.model.LevelSemester;
 import com.ostech.fupregpacalculator.model.Semester;
@@ -178,6 +180,11 @@ public class IntroFragment extends Fragment {
             academicRecord.setCollegeType(college);
             academicRecord.setDepartmentName(departmentName);
             academicRecord.setSemesterList(semesterList);
+            academicRecord.getCoursesFromDatabase();
+
+            for (Course currentCourse: academicRecord.getSemesterList().get(0).getCourseList()) {
+                Log.i(TAG, "setupAcademicRecord: Course: " + currentCourse.getCourseCode());
+            }
 
             Intent semestersSetupIntent = SemestersSetupActivity.newIntent(getActivity());
             startActivity(semestersSetupIntent);
