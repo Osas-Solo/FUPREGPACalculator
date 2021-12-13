@@ -1,6 +1,7 @@
 package com.ostech.fupregpacalculator.model;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
@@ -130,24 +131,22 @@ public class AcademicRecord implements Serializable {
         Log.i(TAG, "getSemesterCoursesFromDatabase: Semester name: " + semester.getSemesterName());
         Matcher semesterDetailsMatcher = semesterDetailsPattern.matcher(semester.getSemesterName());
 
-        String level = semesterDetailsMatcher.group(1);
-        String semesterNumber = semesterDetailsMatcher.group(2);
+        String level = "";
+        String semesterNumber = "";
+
+        if (semesterDetailsMatcher.find()) {
+            level = semesterDetailsMatcher.group(1);
+            semesterNumber = semesterDetailsMatcher.group(2);
+
+            Log.i(TAG, "getSemesterCoursesFromDatabase: Level: " + level);
+            Log.i(TAG, "getSemesterCoursesFromDatabase: Semester: " + semesterNumber);
+        } else {
+            Log.i(TAG, "getSemesterCoursesFromDatabase: Match failed: ");
+        }
 
         String departmentName = getDepartmentName().replace(" ", "_");
 
-        String selectionColumns = LEVEL + " = ? AND " + SEMESTER + " = ?";
-        String[] selectionColumnArguments = {level, semesterNumber};
-        String sortOrder = COURSE_CODE;
-
-        CourseCursorWrapper cursor = (CourseCursorWrapper) departmentsDatabase.query(
-                departmentName,
-                null,
-                selectionColumns,
-                selectionColumnArguments,
-                null,
-                null,
-                sortOrder
-        );
+        CourseCursorWrapper cursor = queryCourses(level, semesterNumber, departmentName);
 
         try {
             cursor.moveToFirst();
@@ -158,6 +157,24 @@ public class AcademicRecord implements Serializable {
         }
 
     }   //  end of getSemesterCoursesFromDatabase()
+
+    private CourseCursorWrapper queryCourses(String level, String semesterNumber, String departmentName) {
+        String selectionColumns = LEVEL + " = ? AND " + SEMESTER + " = ?";
+        String[] selectionColumnArguments = {level, semesterNumber};
+        String sortOrder = COURSE_CODE;
+
+        Cursor cursor = departmentsDatabase.query(
+                departmentName,
+                null,
+                selectionColumns,
+                selectionColumnArguments,
+                null,
+                null,
+                sortOrder
+            );
+
+        return new CourseCursorWrapper(cursor);
+    }
 
     public void sortCoursesInSemesters() {
         for (Semester currentSemester: semesterList) {
