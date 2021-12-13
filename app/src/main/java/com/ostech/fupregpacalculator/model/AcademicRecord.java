@@ -1,13 +1,12 @@
 package com.ostech.fupregpacalculator.model;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.ostech.fupregpacalculator.database.CourseCursorWrapper;
 import com.ostech.fupregpacalculator.database.DepartmentsDatabaseHelper;
 
-import static com.ostech.fupregpacalculator.database.DepartmentsDatabaseSchema.DepartmentsDatabaseTables.*;
 import static com.ostech.fupregpacalculator.database.DepartmentsDatabaseSchema.DepartmentsDatabaseTables.Columns.*;
 
 import java.io.Serializable;
@@ -17,6 +16,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class AcademicRecord implements Serializable {
+    private static final String TAG = AcademicRecord.class.getCanonicalName();
+
     private static AcademicRecord academicRecord;
 
     private College collegeType;
@@ -35,7 +36,7 @@ public class AcademicRecord implements Serializable {
         this.collegeType = collegeType;
 
         for (Semester currentSemester: getSemesterList()) {
-            currentSemester.setInstitution(collegeType);
+            currentSemester.setCollege(collegeType);
         }
     }
 
@@ -126,6 +127,7 @@ public class AcademicRecord implements Serializable {
     private void getSemesterCoursesFromDatabase(Semester semester) {
         Pattern semesterDetailsPattern = Pattern.compile("([1-5]00) level (1st|2nd) semester",
                 Pattern.CASE_INSENSITIVE);
+        Log.i(TAG, "getSemesterCoursesFromDatabase: Semester name: " + semester.getSemesterName());
         Matcher semesterDetailsMatcher = semesterDetailsPattern.matcher(semester.getSemesterName());
 
         String level = semesterDetailsMatcher.group(1);

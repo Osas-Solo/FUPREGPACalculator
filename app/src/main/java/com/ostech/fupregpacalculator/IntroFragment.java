@@ -169,7 +169,7 @@ public class IntroFragment extends Fragment {
 
                 if (currentSemester.isSelected()) {
                     Semester semester = new Semester(currentSemester.getSemesterName());
-                    semester.setInstitution(college);
+                    semester.setCollege(college);
                     semesterList.add(semester);
                 }
             }

@@ -59,7 +59,8 @@ public class ResultActivity extends AppCompatActivity
         }
 
         AcademicRecord academicRecord = AcademicRecord.getInstance(this);
-        academicRecord.setInstitutionType(recoveredAcademicRecord.getCollegeType());
+        academicRecord.setCollegeType(recoveredAcademicRecord.getCollegeType());
+        academicRecord.setDepartmentName(recoveredAcademicRecord.getDepartmentName());
         academicRecord.setSemesterList(recoveredAcademicRecord.getSemesterList());
     }
 

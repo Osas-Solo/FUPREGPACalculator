@@ -10,11 +10,11 @@ public class Semester implements Serializable {
     private ArrayList<Course> courseList;
     private double semesterGPA;
 
-    public College getInstitution() {
+    public College getCollege() {
         return college;
     }
 
-    public void setInstitution(College college) {
+    public void setCollege(College college) {
         this.college = college;
     }
 
