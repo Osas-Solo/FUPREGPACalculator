@@ -137,11 +137,6 @@ public class AcademicRecord implements Serializable {
         if (semesterDetailsMatcher.find()) {
             level = semesterDetailsMatcher.group(1);
             semesterNumber = semesterDetailsMatcher.group(2);
-
-            Log.i(TAG, "getSemesterCoursesFromDatabase: Level: " + level);
-            Log.i(TAG, "getSemesterCoursesFromDatabase: Semester: " + semesterNumber);
-        } else {
-            Log.i(TAG, "getSemesterCoursesFromDatabase: Match failed: ");
         }
 
         String departmentName = getDepartmentName().replace(" ", "_");
@@ -151,7 +146,10 @@ public class AcademicRecord implements Serializable {
         try {
             cursor.moveToFirst();
 
-            semester.getCourseList().add(cursor.getCourse());
+            while (!cursor.isAfterLast()) {
+                semester.getCourseList().add(cursor.getCourse());
+                cursor.moveToNext();
+            }
         } finally {
             cursor.close();
         }
