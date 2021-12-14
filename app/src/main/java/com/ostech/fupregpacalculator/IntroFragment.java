@@ -182,10 +182,6 @@ public class IntroFragment extends Fragment {
             academicRecord.setSemesterList(semesterList);
             academicRecord.getCoursesFromDatabase();
 
-            for (Course currentCourse: academicRecord.getSemesterList().get(0).getCourseList()) {
-                Log.i(TAG, "setupAcademicRecord: Course: " + currentCourse.getCourseCode());
-            }
-
             Intent semesterPagerIntent = SemesterPagerActivity.newIntent(getActivity());
             startActivity(semesterPagerIntent);
         } else {

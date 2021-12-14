@@ -20,13 +20,8 @@
         </activity>
 
         <activity
-            android:name=".SemestersSetupActivity"
-            android:parentActivityName=".NavigationActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"/>
-
-        <activity
             android:name=".SemesterPagerActivity"
-            android:parentActivityName=".SemestersSetupActivity"/>
+            android:parentActivityName=".NavigationActivity"/>
 
         <activity
             android:name=".ResultActivity"
