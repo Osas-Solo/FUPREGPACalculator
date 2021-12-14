@@ -137,7 +137,7 @@ public class SemestersSetupFragment extends Fragment {
             semesterNameTextView.setText(this.semester.getSemesterName());
 
             if (semester.getNumberOfCourses() > 0) {
-                semesterNameTextView.setText(this.semester.getNumberOfCourses());
+                courseNumberEditText.setText(this.semester.getNumberOfCourses());
             }
         }
     }

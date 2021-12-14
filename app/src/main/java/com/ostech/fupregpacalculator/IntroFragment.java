@@ -186,8 +186,8 @@ public class IntroFragment extends Fragment {
                 Log.i(TAG, "setupAcademicRecord: Course: " + currentCourse.getCourseCode());
             }
 
-            Intent semestersSetupIntent = SemestersSetupActivity.newIntent(getActivity());
-            startActivity(semestersSetupIntent);
+            Intent semesterPagerIntent = SemesterPagerActivity.newIntent(getActivity());
+            startActivity(semesterPagerIntent);
         } else {
             Toast noSemesterSelectedToast = Toast.makeText(getActivity(),
                     getString(R.string.no_semester_selected_toast),
