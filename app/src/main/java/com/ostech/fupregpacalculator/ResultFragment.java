@@ -39,6 +39,8 @@ public class ResultFragment extends Fragment {
     private SemesterAdapter semesterAdapter;
     private SemesterCoursesAdapter semesterCoursesAdapter;
 
+    private AcademicRecord academicRecord = AcademicRecord.getInstance(getActivity());
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_result, container, false);
@@ -50,13 +52,13 @@ public class ResultFragment extends Fragment {
         numberOfCoursesTextView = view.findViewById(R.id.result_number_of_courses_text_view);
         remarkTextView = view.findViewById(R.id.result_remark_text_view);
         semesterCoursesRecyclerView = view.findViewById(R.id.result_semester_courses_recycler_view);
+        
+        academicRecord.calculateCGPA();
 
-        AcademicRecord.getInstance(getActivity()).calculateCGPA();
-
-        double cgpa = AcademicRecord.getInstance(getActivity()).getCumulativeGradePointAverage();
-        double totalCreditUnit = AcademicRecord.getInstance(getActivity()).getTotalCreditUnit();
-        double totalGradePoint = AcademicRecord.getInstance(getActivity()).getTotalGradePoint();
-        int numberOfCourses = AcademicRecord.getInstance(getActivity()).getNumberOfCourses();
+        double cgpa = academicRecord.getCumulativeGradePointAverage();
+        double totalCreditUnit = academicRecord.getTotalCreditUnit();
+        double totalGradePoint = academicRecord.getTotalGradePoint();
+        int numberOfCourses = academicRecord.getNumberOfCourses();
         String remark = college.getRemark(cgpa);
 
         cgpaTextView.setText(String.format("%.2f", cgpa));
@@ -67,7 +69,7 @@ public class ResultFragment extends Fragment {
 
         semestersRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        AcademicRecord.getInstance(getActivity()).sortCoursesInSemesters();
+        academicRecord.sortCoursesInSemesters();
 
         if (semesterAdapter == null) {
             semesterAdapter = new SemesterAdapter(semesterList);
