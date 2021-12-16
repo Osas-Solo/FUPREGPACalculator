@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Help</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            --primary-color: #A702C4;
+            --grey-color1: #F2F2F2;
+            --grey-color2: #E6E6E6;
+            --drop-shadow: 0px 5px 5px rgba(0, 0, 0, 0.50);
+            font-family: Verdana, Arial, sans-serif;
+            letter-spacing: 0.1em;
+            word-spacing: 0.2em;
+            line-height: 1.6em;
+        }
+
+        article {
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            padding: 10px;
+            margin: 20px auto 0 auto;
+            margin-bottom: 50px;
+            font-weight: bold;
+            border-collapse: collapse;
+            box-shadow: var(--drop-shadow);
+        }
+
+        tr:nth-child(odd) {
+            background-color: var(--grey-color1);
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--grey-color2);
+        }
+
+        th, td {
+            text-align: center;
+            padding: 5px;
+        }
+
+        th {
+            color: var(--primary-color);
+            font-size: 1.2em;
+        }
+
+        p {
+            margin: 10px;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        h2 {
+            font-size: 1.5em;
+        }
+
+        h3 {
+            font-size: 1em;
+        }
+
+        ol, ul {
+            margin-left: 30px;
+        }
+
+        ul {
+            list-style-type: square;
+        }
+
+        ol li, ul li {
+            margin: 10px;
+        }
+
+        dl {
+            margin-left: 30px;
+        }
+
+        dl dt {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    
+    <article>
+        <h2>How to use this GPA Calculator:</h2>
+
+        <ol>
+            <li>On the Intro screen, select your institution.</li>
+            <li>Check the level(s) and semester(s) that you want to calculate for.</li>
+            <li>Click Proceed.</li>
+            <li>
+                On the SemestersSetup screen, enter the number of courses you want to calculate for
+                each semester. You can only calculate a maximum of 30 courses for each semester.
+            </li>
+            <li>Click proceed.</li>
+            <li>
+                On the Semester screen, the number of courses entered would be shown with their
+                various inputs. You can navigate semesters by swiping left or right or you could
+                use the navigation buttons at the bottom of the screen:
+                <dl>
+                    <dt>Select your grade for each course.</dt>
+                    <dt>You may edit the Credit Units if need be.</dt>
+                    <dt>You could leave a Credit Unit textfield blank.</dt>
+                    <dt>
+                        Click on the delete button on any course if you do not wish to calculate
+                        that particular course.
+                    </dt>
+                    <dt>
+                        You may decide to add more courses to calculate for each semester by using
+                        the <b>+</b> button on the menu bar.
+                        <br>(This feature would be useful for carryover courses).
+                    </dt>
+                </dl>
+            </li>
+            <li>Click Calculate.</li>
+            <li>The result of the calculation is then displayed.</li>
+        </ol>
+
+        <h2>How to Calculate GPA manually:</h2>
+        <table>
+            <caption>University and College of Education Grading System</caption>
+
+            <tr>
+                <th>Grade</th>
+                <th>Rating</th>
+            </tr>
+
+            <tr>
+                <td>A</td>
+                <td>5</td>
+            </tr>
+
+            <tr>
+                <td>B</td>
+                <td>4</td>
+            </tr>
+
+            <tr>
+                <td>C</td>
+                <td>3</td>
+            </tr>
+
+            <tr>
+                <td>D</td>
+                <td>2</td>
+            </tr>
+
+            <tr>
+                <td>E</td>
+                <td>1</td>
+            </tr>
+
+            <tr>
+                <td>F</td>
+                <td>0</td>
+            </tr>
+        </table>
+
+        <table>
+            <caption>Polytechnic Grading System</caption>
+
+            <tr>
+                <th>Grade</th>
+                <th>Rating</th>
+            </tr>
+
+            <tr>
+                <td>A</td>
+                <td>4</td>
+            </tr>
+
+            <tr>
+                <td>AB</td>
+                <td>3.5</td>
+            </tr>
+
+            <tr>
+                <td>B</td>
+                <td>3.25</td>
+            </tr>
+
+            <tr>
+                <td>BC</td>
+                <td>3</td>
+            </tr>
+
+            <tr>
+                <td>C</td>
+                <td>2.75</td>
+            </tr>
+
+            <tr>
+                <td>CD</td>
+                <td>2.5</td>
+            </tr>
+
+            <tr>
+                <td>D</td>
+                <td>2.25</td>
+            </tr>
+
+            <tr>
+                <td>E</td>
+                <td>2</td>
+            </tr>
+
+            <tr>
+                <td>F</td>
+                <td>0</td>
+            </tr>
+        </table>
+
+        <p>
+            <h3>The Credit Point (CP) of each course is calculated by:</h3>
+
+            CP = Credit Unit (CU) * Rating<br><br>
+            The Total Number of Units (TNU) is gotten by summing the CU of all the courses used in the calculation.<br><br>
+            The Total Credit Point (TCP) is gotten by summing the CP of all the courses used in the calculation.<br><br>
+            The Grade Point Average (GPA) then calculated:<br>
+            <code>GPA = TCP / TNU</code>
+        </p>
+
+        <p>
+            <h3>For Cumulative GPA (CGPA) calculation:</h3>
+            The summation of every TNU is gotten from every semester from beginning to the current semester as Cummulative Number of Units (CNU).
+            While the summation of every TCP is gotten as Cummulative Credit Point (CCP).<br>
+
+            Then the CGPA is calculated:<br>
+            <code>CGPA = CCP / CNU</code>
+        </p>
+
+        <table>
+            <caption>University Degree Classification:</caption>
+
+            <tr>
+                <th>Class of Degree</th>
+                <th>CGPA</th>
+            </tr>
+
+            <tr>
+                <td>4.50 - 5.00</td>
+                <td>First Class</td>
+            </tr>
+
+            <tr>
+                <td>3.50 - 4.49</td>
+                <td>Second Class Upper Division</td>
+            </tr>
+
+            <tr>
+                <td>2.40 - 3.49</td>
+                <td>Second Class Lower Division</td>
+            </tr>
+
+            <tr>
+                <td>1.50 - 2.39</td>
+                <td>Third Class</td>
+            </tr>
+        </table>
+
+        <table>
+            <caption>Polytechnic Degree Classification:</caption>
+
+            <tr>
+                <th>Class of Degree</th>
+                <th>CGPA</th>
+            </tr>
+
+            <tr>
+                <td>3.5 - 4.0</td>
+                <td>First Class</td>
+            </tr>
+
+            <tr>
+                <td>3.0 - 3.49</td>
+                <td>Second Class Upper Division</td>
+            </tr>
+
+            <tr>
+                <td>2.0 - 2.99</td>
+                <td>Second Class Lower Division</td>
+            </tr>
+
+            <tr>
+                <td>1.00 - 1.99</td>
+                <td>Third Class</td>
+            </tr>
+        </table>
+
+        <table>
+            <caption>College of Education Degree Classification:</caption>
+
+            <tr>
+                <th>Class of Degree</th>
+                <th>CGPA</th>
+            </tr>
+
+            <tr>
+                <td>4.50 - 5.00</td>
+                <td>Distinction</td>
+            </tr>
+
+            <tr>
+                <td>3.50 - 4.49</td>
+                <td>Credit</td>
+            </tr>
+
+            <tr>
+                <td>2.40 - 3.49</td>
+                <td>Merit</td>
+            </tr>
+
+            <tr>
+                <td>1.50 - 2.39</td>
+                <td>Pass</td>
+            </tr>
+        </table>
+
+    </article>
+
+</body>
+</html>
