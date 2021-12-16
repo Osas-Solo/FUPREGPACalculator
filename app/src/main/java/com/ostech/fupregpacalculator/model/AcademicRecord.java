@@ -26,8 +26,8 @@ public class AcademicRecord implements Serializable {
     private ArrayList<Semester> semesterList = new ArrayList<>();
     private double cumulativeGradePointAverage;
 
-    private Context context;
-    private SQLiteDatabase departmentsDatabase;
+    private transient Context context;
+    private transient SQLiteDatabase departmentsDatabase;
 
     public College getCollegeType() {
         return collegeType;

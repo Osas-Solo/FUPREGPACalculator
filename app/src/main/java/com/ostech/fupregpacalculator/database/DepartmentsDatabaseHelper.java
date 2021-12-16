@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.io.Serializable;
+
 import static com.ostech.fupregpacalculator.database.DepartmentsDatabaseSchema.DepartmentsDatabaseTables.*;
 import static com.ostech.fupregpacalculator.database.DepartmentsDatabaseSchema.DepartmentsDatabaseTables.Columns.*;
 
