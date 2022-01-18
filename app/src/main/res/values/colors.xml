@@ -8,10 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="purple">#BD06DD</color>
-    <color name="mid_purple">#C631E0</color>
-    <color name="light_purple">#F9E6FC</color>
-    <color name="dark_purple">#A702C4</color>
+    <color name="blue">#0052DC</color>
+    <color name="mid_blue">#0C66FF</color>
+    <color name="light_blue">#D9E2F3</color>
+    <color name="dark_blue">#013B9F</color>
     <color name="light_grey">#F2F2F2</color>
     <color name="grey">#E6E6E6</color>
     <color name="dark_grey">#5F5F5F</color>

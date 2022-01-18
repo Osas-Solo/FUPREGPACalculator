@@ -2,13 +2,13 @@
     <!-- Base application theme. -->
     <style name="Theme.FUPREGPACalculator" parent="Theme.AppCompat.DayNight">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple</item>
-        <item name="colorPrimaryVariant">@color/mid_purple</item>
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryVariant">@color/mid_blue</item>
         <item name="colorOnPrimary">@color/grey</item>
 
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/purple</item>
-        <item name="colorSecondaryVariant">@color/mid_purple</item>
+        <item name="colorSecondary">@color/blue</item>
+        <item name="colorSecondaryVariant">@color/mid_blue</item>
         <item name="colorOnSecondary">@color/black</item>
 
         <!-- Status bar color. -->
