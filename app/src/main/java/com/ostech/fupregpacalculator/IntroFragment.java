@@ -124,7 +124,7 @@ public class IntroFragment extends Fragment {
         String[] departmentArray = getResources().getStringArray(departmentArrayId);
 
         ArrayAdapter<String> gradesArrayAdapter = new ArrayAdapter<String>(
-                getActivity(), android.R.layout.simple_spinner_item, departmentArray );
+                getActivity(), android.R.layout.simple_spinner_dropdown_item, departmentArray );
         departmentSpinner.setAdapter(gradesArrayAdapter);
 
         updateLevelsLayout();
